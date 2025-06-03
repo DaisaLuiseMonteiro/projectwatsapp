@@ -10,7 +10,11 @@
     <title>WhatsApp</title>
   </head>
   <body class="m-0 font-sans bg-white flex justify-center items-center h-screen">
-    <div class="flex h-[95vh] w-[95vw] shadow-[0_0_20px_rgba(0,0,0,0.15)] rounded-[10px] overflow-hidden">
+    
+<div id="auth-section" class="flex items-center justify-center w-full h-screen bg-[#f4f1e8] fixed top-0 left-0 z-50">
+  <div id="auth-content"></div>
+</div>
+<div class="flex h-[95vh] w-[95vw] shadow-[0_0_20px_rgba(0,0,0,0.15)] rounded-[10px] overflow-hidden">
       
       <div class="w-[70px] bg-[#f4f1e8] flex flex-col items-center justify-center p-[10px]">
         <ul class="list-none p-0 m-0 w-full flex flex-col items-center">
@@ -47,36 +51,224 @@
         </ul>
       </div>
 
-      <div id="main-section" class="w-[300px] bg-white p-[15px] border-r border-[#e5e5e5]">
-        <h3>Discussions</h3>
-        <input type="text" id="search-input" placeholder="Recherche..." class="w-[95%] p-[8px] rounded-[5px] border border-[#ccc]">
-        <div id="contacts-list" class="mt-4 space-y-2"></div>
-      </div>  
-      
-      <div id="wat" class="flex-grow flex flex-col bg-[#f4f1e8] justify-center items-center text-center px-[20px]">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/2048px-WhatsApp.svg.png" alt="WhatsApp Illustration" class="w-[120px] h-[120px] mb-[20px]" />
-        <h2 class="text-[20px] md:text-[24px] font-semibold mb-[10px]">WhatsApp Business sur le Web</h2>
-        <p class="text-[14px] md:text-[16px] text-[#5f5f5f] max-w-[300px]">Développez, organisez et gérez votre compte professionnel.</p>
-        <div class="mt-[40px] text-[12px] text-[#6b6b6b] flex items-center gap-[5px]">
-          <i class="fa-solid fa-lock text-[#6b6b6b] text-[13px]"></i>
-          <span>Vos messages personnels sont chiffrés de bout en bout</span>
-        </div>
+   <div id="main-section" class="w-[300px] bg-white p-[15px] border-r border-[#e5e5e5]">
+  <div class="flex items-center justify-between mb-2">
+    <h3 class="ml-2">Discussions</h3>
+        <button id="logout-btn" class="bg-red-200 text-white px-3 py-1 rounded-50 hover:bg-red-600 transition">Déconnexion</button>
+  </div>
+  <input type="text" id="search-input" placeholder="Recherche..." class="w-[95%] p-[8px] rounded-[5px] border border-[#ccc]">
+  <div id="contacts-list" class="mt-4 space-y-2"></div>
+</div>
+<div id="wat" class="flex-grow flex flex-col bg-[#f4f1e8] justify-between relative">
+  <div class="flex bg-white justify-between items-center p-[10px]">
+    <div class="flex items-center gap-[10px]">
+      <div class="w-[40px] h-[40px] rounded-full overflow-hidden flex justify-center items-center bg-[#585555] p-0">
       </div>
+      <div class="text-[16px] font-semibold text-gray-400"></div>
     </div>
+    <div class="flex gap-[10px] items-center">
+      <button class="border border-orange-500 text-orange-500 w-[28px] h-[28px] rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-[#f0f0f0] hover:shadow-[0_2px_5px_rgba(0,0,0,0.15)]" title="Vider les messages" disabled>
+        <i class="fa-solid fa-delete-left" style="color: #ed7402;"></i>
+      </button>
+      <button class="border border-[#5e5a5e] w-[28px] h-[28px] rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-[#f0f0f0] hover:shadow-[0_2px_5px_rgba(0,0,0,0.15)]" title="Archiver les contacts" disabled>
+        <i class="fa-solid fa-box-archive" style="color: #5e5a5e;"></i>
+      </button>
+      <button class="border border-[#2e230e] text-[#1b1603] w-[28px] h-[28px] rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-[#f0f0f0] hover:shadow-[0_2px_5px_rgba(0,0,0,0.15)]" title="Bloquer le contact" disabled>
+        <i class="fa-solid fa-stop" style="color: #1b1603;"></i>
+      </button>
+      <button class="border border-red-500 text-red-500 w-[28px] h-[28px] rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 hover:bg-[#f0f0f0] hover:shadow-[0_2px_5px_rgba(0,0,0,0.15)]" title="Supprimer les contacts" disabled>
+        <i class="fa-solid fa-trash" style="color: #b43c2f;"></i>
+      </button>
+    </div>
+  </div>
+  <div class="flex-grow flex items-center justify-center p-[20px]">
+    <span class="text-gray-400 text-[15px]"></span>
+  </div>
+  <div class="p-0 m-0">
+    <div class="flex items-center border border-[#ccc] py-[5px] px-[10px] bg-white w-full box-border">
+      <input type="text" class="flex-grow border-none outline-none text-[14px] p-[10px] rounded-[25px] bg-[rgba(241,236,236,0.8)]" placeholder="Écrivez un message..." disabled>
+      <button class="bg-[#25D366] border-none text-white text-[20px] w-[40px] h-[40px] rounded-full cursor-pointer flex items-center justify-center ml-[10px]" title="Envoyer" disabled>
+        <i class='bx bx-send text-white text-[18px]'></i>
+      </button>
+    </div>
+  </div>
+</div>
 
     <script>
+function getUsers() {
+  return JSON.parse(localStorage.getItem('users') || '[]');
+}
+function saveUsers(users) {
+  localStorage.setItem('users', JSON.stringify(users));
+}
+function setCurrentUser(user) {
+  localStorage.setItem('currentUser', JSON.stringify(user));
+}
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('currentUser') || 'null');
+}
+function logoutUser() {
+  localStorage.removeItem('currentUser');
+}
+
+function showLoginForm() {
+  document.getElementById('auth-section').style.display = 'flex';
+  document.getElementById('auth-content').innerHTML = `
+    <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-sm">
+      <h2 class="text-2xl font-bold text-center mb-6 text-green-600">Connexion WhatsApp</h2>
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Téléphone</label>
+          <input type="text" id="login-telephone" class="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Mot de passe</label>
+          <input type="password" id="login-password" class="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">Se connecter</button>
+      </form>
+      <p class="text-sm text-center text-gray-500 mt-4">
+        <a href="#" id="forgot-password-link" class="text-green-600 hover:underline">Mot de passe oublié ?</a>
+      </p>
+      <p class="text-sm text-center text-gray-500 mt-4">Pas encore inscrit ? <a href="#" id="show-register" class="text-green-600 hover:underline">Créer un compte</a></p>
+    </div>
+  `;
+  document.getElementById('show-register').onclick = showRegisterForm;
+  document.getElementById('forgot-password-link').onclick = showForgotPasswordForm;
+  document.getElementById('loginForm').onsubmit = function(e) {
+    e.preventDefault();
+    const tel = document.getElementById('login-telephone').value.trim();
+    const pass = document.getElementById('login-password').value;
+    const users = getUsers();
+    const user = users.find(u => u.telephone === tel && u.password === pass);
+    if (user) {
+      setCurrentUser(user);
+      document.getElementById('auth-section').style.display = 'none';
+      location.reload();
+    } else {
+      showFormMessage('loginForm', "Téléphone ou mot de passe incorrect !", "error");
+    }
+  };
+}
+function showForgotPasswordForm() {
+  document.getElementById('auth-section').style.display = 'flex';
+  document.getElementById('auth-content').innerHTML = `
+    <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-sm">
+      <h2 class="text-2xl font-bold text-center mb-6 text-green-600">Réinitialiser le mot de passe</h2>
+      <form id="forgotPasswordForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Téléphone</label>
+          <input type="text" id="forgot-telephone" class="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Nouveau mot de passe</label>
+          <input type="password" id="new-password" class="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">Réinitialiser</button>
+      </form>
+      <p class="text-sm text-center text-gray-500 mt-4">
+        <a href="#" id="show-login" class="text-green-600 hover:underline">Retour à la connexion</a>
+      </p>
+    </div>
+  `;
+  document.getElementById('show-login').onclick = showLoginForm;
+  document.getElementById('forgotPasswordForm').onsubmit = function(e) {
+    e.preventDefault();
+    const tel = document.getElementById('forgot-telephone').value.trim();
+    const newPassword = document.getElementById('new-password').value;
+    const users = getUsers();
+    const user = users.find(u => u.telephone === tel);
+    if (user) {
+      user.password = newPassword; 
+
+      saveUsers(users); 
+      showFormMessage('forgotPasswordForm', "Mot de passe réinitialisé avec succès !", "success");
+      setTimeout(showLoginForm, 1500);
+    } else {
+      showFormMessage('forgotPasswordForm', "Numéro de téléphone introuvable.", "error");
+    }
+  };
+}
+function showRegisterForm() {
+  document.getElementById('auth-section').style.display = 'flex';
+  document.getElementById('auth-content').innerHTML = `
+    <div class="bg-white p-8 rounded-xl shadow-xl w-full max-w-sm">
+      <h2 class="text-2xl font-bold text-center mb-6 text-green-600">Créer un compte</h2>
+      <form id="registerForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Nom</label>
+          <input type="text" id="register-nom" class="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Téléphone</label>
+          <input type="text" id="register-telephone" class="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Mot de passe</label>
+          <input type="password" id="register-password" class="mt-1 block w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+        </div>
+        <button type="submit" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">S'inscrire</button>
+      </form>
+      <p class="text-sm text-center text-gray-500 mt-4">Déjà inscrit ? <a href="#" id="show-login" class="text-green-600 hover:underline">Se connecter</a></p>
+    </div>
+  `;
+  document.getElementById('show-login').onclick = showLoginForm;
+  document.getElementById('registerForm').onsubmit = function(e) {
+    e.preventDefault();
+    const nom = document.getElementById('register-nom').value.trim();
+    const tel = document.getElementById('register-telephone').value.trim();
+    const pass = document.getElementById('register-password').value;
+    const users = getUsers();
+    if (users.find(u => u.telephone === tel)) {
+      showFormMessage('registerForm', "Ce numéro existe déjà !", "error");
+      return;
+    }
+    const user = { nom, telephone: tel, password: pass };
+    users.push(user);
+    saveUsers(users);
+    showFormMessage('registerForm', "Inscription réussie ! Connectez-vous.", "success");
+    setTimeout(showLoginForm, 1200);
+  };
+}
+function verifierAuthentification() {
+  const utilisateurActuel = getCurrentUser();
+  if (!utilisateurActuel) {
+    // Afficher le formulaire d'inscription ou de connexion
+    document.getElementById('auth-section').style.display = 'flex';
+    showRegisterForm(); // Affiche le formulaire d'inscription par défaut
+    document.querySelector('.flex.h-[95vh].w-[95vw]').style.display = 'none'; // Masque la page d'accueil
+  } else {
+    // L'utilisateur est authentifié, afficher la page d'accueil
+    document.getElementById('auth-section').style.display = 'none';
+    document.querySelector('.flex.h-[95vh].w-[95vw]').style.display = '';
+  }
+}
+window.addEventListener('DOMContentLoaded', () => {
+  verifierAuthentification();
+});
+setTimeout(() => {
+  const logoutBtn = document.getElementById('logout-btn');
+  if (logoutBtn) {
+    logoutBtn.onclick = () => {
+      logoutUser();
+      location.reload();
+    };
+  }
+}, 200);
      let contacts = [
   { nom: "Vous", prenom: "", telephone: "775312571" },
   { nom: "Daisa", prenom: "", telephone: "76 621 00 94" },
   { nom: "Louise", prenom: "", telephone: "77 634 54 77" },
   { nom: "Monteiro", prenom: "", telephone: "77 687 21 72" }
 ];
-
+const brouillons = {}; 
 let groupes = [
   { nom: "ODC", description: "esca", membres: ["Vous", "Daisa"] },
   { nom: "Promo2025", description: "groupe2", membres: ["Vous", "Louise"] }
 ];
+loadGroupesFromStorage();
 let groupesArchives = [];
+let messagesParDiscussion = {};
 
 function genererInitiales(nom, prenom = "") {
   const nomInitial = nom.charAt(0).toUpperCase();
@@ -113,7 +305,157 @@ function verifierNomExistant(nom, prenom = "") {
     compteur++;
   }
 }
+function showFormMessage(formId, message, type = "error") {
+  let form = document.getElementById(formId);
+  if (!form) return;
+  let msgDiv = form.querySelector('.form-message');
+  if (!msgDiv) {
+    msgDiv = document.createElement('div');
+    msgDiv.className = 'form-message mt-2 text-sm';
+    form.prepend(msgDiv);
+  }
+  msgDiv.textContent = message;
+  msgDiv.style.color = type === "error" ? "#b91c1c" : "#15803d";
+  msgDiv.style.background = type === "error" ? "#fee2e2" : "#dcfce7";
+  msgDiv.style.borderRadius = "6px";
+  msgDiv.style.padding = "6px 10px";
+  msgDiv.style.marginBottom = "8px";
+  setTimeout(() => { msgDiv.textContent = ""; }, 3500);
+}
+function afficherDiffusionContacts() {
+  const section = document.createElement('div');
+  section.className = 'w-[300px] bg-white p-[15px] border-r border-[#e5e5e5]';
+  section.id = 'main-section';
+  section.innerHTML = `
+    <h3>Diffusion</h3>
+    <input type="text" id="search-input" placeholder="Recherche..." class="w-[95%] p-[8px] rounded-[5px] border border-[#ccc] mb-2">
+    <form id="diffusion-form">
+      <div id="contacts-list" class="space-y-2 mb-4"></div>
+    </form>
+  `;
 
+  mainSection.replaceWith(section);
+  mainSection = section;
+
+  function renderContactsDiffusion(filtre = "") {
+    const contactsList = section.querySelector('#contacts-list');
+    contactsList.innerHTML = '';
+    const contactsFiltres = contacts.filter(contact => {
+      const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
+      return nomComplet.toLowerCase().includes(filtre.toLowerCase()) ||
+             contact.telephone.includes(filtre);
+    });
+    contactsFiltres.forEach((contact, idx) => {
+      const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
+      const initiales = genererInitiales(contact.nom, contact.prenom);
+      const avatar = creerAvatar(initiales);
+      const div = document.createElement('div');
+      div.className = 'flex items-center justify-between py-2 border-b-2 border-orange-700';
+      div.innerHTML = `
+        <div class="flex items-center gap-3">
+          <img src="${avatar}" class="w-10 h-10 rounded-full object-cover">
+          <span class="font-medium text-sm">${nomComplet}</span>
+        </div>
+        <input type="checkbox" class="accent-orange-600" data-nom="${nomComplet}" id="diffusion-cb-${idx}">
+      `;
+      div.addEventListener('click', function(e) {
+        if (e.target.tagName !== "INPUT") {
+          const cb = div.querySelector('input[type="checkbox"]');
+          cb.checked = !cb.checked;
+        }
+      });
+      contactsList.appendChild(div);
+    });
+  }
+  renderContactsDiffusion();
+
+  section.querySelector('#search-input').addEventListener('input', function(e) {
+    renderContactsDiffusion(e.target.value.trim());
+  });
+
+  const chatArea = document.getElementById('wat');
+  if (chatArea) {
+    const input = chatArea.querySelector('input[type="text"]');
+    const sendBtn = chatArea.querySelector('button[title="Envoyer"]');
+    if (input) input.setAttribute('disabled', 'disabled');
+    if (sendBtn) sendBtn.setAttribute('disabled', 'disabled');
+  }
+  function afficherDiffusionContacts() {
+  const section = document.createElement('div');
+  section.className = 'w-[300px] bg-white p-[15px] border-r border-[#e5e5e5]';
+  section.id = 'main-section';
+  section.innerHTML = `
+    <h3>Diffusion</h3>
+    <input type="text" id="search-input" placeholder="Recherche..." class="w-[95%] p-[8px] rounded-[5px] border border-[#ccc] mb-2">
+    <form id="diffusion-form">
+      <div id="contacts-list" class="space-y-2 mb-4"></div>
+    </form>
+    <div class="text-xs text-gray-500 mt-2">Sélectionnez un ou plusieurs contacts pour préparer une diffusion.<br>L'envoi du message se fait dans la section 3 (chat) après avoir cliqué sur un contact.</div>
+  `;
+
+  mainSection.replaceWith(section);
+  mainSection = section;
+
+  function renderContactsDiffusion(filtre = "") {
+    const contactsList = section.querySelector('#contacts-list');
+    contactsList.innerHTML = '';
+    const contactsFiltres = contacts.filter(contact => {
+      const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
+      return nomComplet.toLowerCase().includes(filtre.toLowerCase()) ||
+             contact.telephone.includes(filtre);
+    });
+    contactsFiltres.forEach((contact, idx) => {
+      const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
+      const initiales = genererInitiales(contact.nom, contact.prenom);
+      const avatar = creerAvatar(initiales);
+      const div = document.createElement('div');
+      div.className = 'flex items-center justify-between py-2 border-b-2 border-orange-700';
+      div.innerHTML = `
+        <div class="flex items-center gap-3">
+          <img src="${avatar}" class="w-10 h-10 rounded-full object-cover">
+          <span class="font-medium text-sm">${nomComplet}</span>
+        </div>
+        <input type="checkbox" class="accent-orange-600" data-nom="${nomComplet}" id="diffusion-cb-${idx}">
+      `;
+      div.addEventListener('click', function(e) {
+        if (e.target.tagName !== "INPUT") {
+          const cb = div.querySelector('input[type="checkbox"]');
+          cb.checked = !cb.checked;
+          updateChatActivation();
+        }
+      });
+      div.querySelector('input[type="checkbox"]').addEventListener('change', updateChatActivation);
+      contactsList.appendChild(div);
+    });
+  }
+  renderContactsDiffusion();
+
+  section.querySelector('#search-input').addEventListener('input', function(e) {
+    renderContactsDiffusion(e.target.value.trim());
+    updateChatActivation();
+  });
+
+  function updateChatActivation() {
+    const chatArea = document.getElementById('wat');
+    if (chatArea) {
+      const input = chatArea.querySelector('input[type="text"]');
+      const sendBtn = chatArea.querySelector('button[title="Envoyer"]');
+      const checked = section.querySelectorAll('input[type="checkbox"]:checked');
+      if (input && sendBtn) {
+        if (checked.length === 0) {
+          input.setAttribute('disabled', 'disabled');
+          sendBtn.setAttribute('disabled', 'disabled');
+        } else {
+          input.removeAttribute('disabled');
+          sendBtn.removeAttribute('disabled');
+        }
+      }
+    }
+  }
+
+   updateChatActivation();
+}
+}
 function trierContacts() {
   contacts.sort((a, b) => {
     const nomA = a.prenom ? `${a.nom} ${a.prenom}` : a.nom;
@@ -121,24 +463,24 @@ function trierContacts() {
     return nomA.toLowerCase().localeCompare(nomB.toLowerCase());
   });
 }
-
 function afficherContacts(filtre = "") {
   const contactsList = document.querySelector('#contacts-list');
   if (!contactsList) return;
-  
+
   contactsList.innerHTML = '';
   trierContacts();
-  
+
   const contactsFiltres = contacts.filter(contact => {
     const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
-    return nomComplet.toLowerCase().includes(filtre.toLowerCase()) ||
-           contact.telephone.includes(filtre);
+    return contact.nom !== "Vous" && 
+           (nomComplet.toLowerCase().includes(filtre.toLowerCase()) ||
+           contact.telephone.includes(filtre));
   });
 
   contactsFiltres.forEach(contact => {
     const div = document.createElement('div');
     div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer';
-    
+
     const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
     const initiales = genererInitiales(contact.nom, contact.prenom);
     const avatar = creerAvatar(initiales);
@@ -149,7 +491,6 @@ function afficherContacts(filtre = "") {
         <div class="font-medium text-sm">${nomComplet}</div>
         <div class="text-xs text-gray-500 flex items-center justify-between min-w-[120px]">
           <span>${contact.telephone}</span>
-          <span class="ml-2 flex-shrink-0 w-2 h-2 rounded-full bg-green-500 inline-block"></span>
         </div>
       </div>
     `;
@@ -200,14 +541,41 @@ function afficherRecherche(filtre) {
   if (!contactsList) return;
   
   contactsList.innerHTML = '';
+
+  if (filtre === '*') {
+    trierContacts();
+    contacts.forEach(contact => {
+      const div = document.createElement('div');
+      div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer';
+      const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
+      const initiales = genererInitiales(contact.nom, contact.prenom);
+      const avatar = creerAvatar(initiales);
+      div.innerHTML = `
+        <img src="${avatar}" class="w-10 h-10 rounded-full object-cover">
+        <div>
+          <div class="font-medium text-sm">${nomComplet}</div>
+          <div class="text-xs text-gray-500 flex items-center justify-between min-w-[120px]">
+            <span>${contact.telephone}</span>
+          </div>
+        </div>
+      `;
+      div.addEventListener('click', function() {
+        afficherChat(nomComplet, avatar);
+      });
+      contactsList.appendChild(div);
+    });
+    return;
+  }
   
-  const contactsFiltres = contacts.filter(contact => {
+  const allContacts = [...contacts, ...archives];
+  const contactsFiltres = allContacts.filter(contact => {
     const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
     return nomComplet.toLowerCase().includes(filtre.toLowerCase()) ||
            contact.telephone.includes(filtre);
   });
 
-  const groupesFiltres = groupes.filter(groupe => 
+  const allGroupes = [...groupes, ...groupesArchives];
+  const groupesFiltres = allGroupes.filter(groupe => 
     groupe.nom.toLowerCase().includes(filtre.toLowerCase()) ||
     (groupe.description && groupe.description.toLowerCase().includes(filtre.toLowerCase()))
   );
@@ -221,18 +589,15 @@ function afficherRecherche(filtre) {
     contactsFiltres.forEach(contact => {
       const div = document.createElement('div');
       div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer';
-      
       const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
       const initiales = genererInitiales(contact.nom, contact.prenom);
       const avatar = creerAvatar(initiales);
-      
       div.innerHTML = `
         <img src="${avatar}" class="w-10 h-10 rounded-full object-cover">
         <div>
           <div class="font-medium text-sm">${nomComplet}</div>
           <div class="text-xs text-gray-500 flex items-center justify-between min-w-[120px]">
             <span>${contact.telephone}</span>
-            <span class="ml-2 flex-shrink-0 w-2 h-2 rounded-full bg-green-500 inline-block"></span>
           </div>
         </div>
       `;
@@ -252,10 +617,8 @@ function afficherRecherche(filtre) {
     groupesFiltres.forEach(groupe => {
       const div = document.createElement('div');
       div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer';
-      
       const initiales = genererInitiales(groupe.nom);
       const avatar = creerAvatar(initiales, "#e5e5e5");
-      
       div.innerHTML = `
         <img src="${avatar}" class="w-10 h-10 rounded-full object-cover">
         <div>
@@ -268,6 +631,13 @@ function afficherRecherche(filtre) {
       });
       contactsList.appendChild(div);
     });
+  }
+
+  if (contactsFiltres.length === 0 && groupesFiltres.length === 0) {
+    const emptyDiv = document.createElement('div');
+    emptyDiv.className = 'text-gray-400 text-sm mt-4';
+    emptyDiv.textContent = 'Aucun résultat trouvé.';
+    contactsList.appendChild(emptyDiv);
   }
 }
 
@@ -342,7 +712,13 @@ function creerInterfaceNouveau() {
 
   return container;
 }
-
+function saveGroupesToStorage() {
+  localStorage.setItem('groupes', JSON.stringify(groupes));
+}
+function loadGroupesFromStorage() {
+  const data = localStorage.getItem('groupes');
+  if (data) groupes = JSON.parse(data);
+}
 function creerFormulaireContact() {
   const container = document.createElement('div');
   container.className = 'w-[300px] p-[15px] border-r flex flex-col bg-white';
@@ -435,16 +811,16 @@ function creerFormulaireContact() {
       
       if (nom && telephone) {
         const numeroExiste = contacts.find(c => c.telephone === telephone);
-        if (numeroExiste) {
-          alert('Ce numéro de téléphone existe déjà !');
-          return;
-        }
-        if (!/^\d+$/.test(telephone)) {
-          alert('Le numéro doit être uniquement composé de chiffres !');
-          return;
-        }
+       if (numeroExiste) {
+  showFormMessage('contact-form', "Ce numéro de téléphone existe déjà !", "error");
+  return;
+}
+      if (!/^\d+$/.test(telephone)) {
+  showFormMessage('contact-form', "Le numéro doit être uniquement composé de chiffres !", "error");
+  return;
+}
         const nomFinal = verifierNomExistant(nom, prenom);
-        const [nomModifie, prenomModifie] = nomFinal.includes(' ') && !nomFinal.match(/\d$/) 
+        const [nomModifie, prenomModifie] = nomFinal.includes(' ') && !nomModifie.match(/\d$/) 
           ? nomFinal.split(' ', 2) 
           : nomFinal.includes(' ') 
             ? [nomFinal, ''] 
@@ -456,19 +832,106 @@ function creerFormulaireContact() {
           telephone 
         });
         restaurerDiscussions();
-      } else {
-        alert('Veuillez remplir au moins le nom et le téléphone');
-      }
+   } else {
+  showFormMessage('contact-form', "Veuillez remplir au moins le nom et le téléphone", "error");
+}
     };
   }, 100);
 
   return container;
 }
+function afficherPopupMembresGroupe(nomGroupe) {
+  const groupe = groupes.find(g => g.nom === nomGroupe) || groupesArchives.find(g => g.nom === nomGroupe);
+  if (!groupe) return;
 
+  if (typeof groupe.membres[0] === "string") {
+    groupe.membres = groupe.membres.map(nom => ({ nom, statut: nom === "Vous" ? "admin" : "membre" }));
+  }
+
+  let popup = document.createElement('div');
+  popup.style.position = 'fixed';
+  popup.style.top = '0';
+  popup.style.left = '0';
+  popup.style.width = '100vw';
+  popup.style.height = '100vh';
+  popup.style.background = 'rgba(0,0,0,0.2)';
+  popup.style.display = 'flex';
+  popup.style.alignItems = 'center';
+  popup.style.justifyContent = 'center';
+  popup.style.zIndex = '9999';
+
+  popup.innerHTML = `
+    <div style="background:#fff;padding:24px 32px;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.15);min-width:320px;max-height:80vh;display:flex;flex-direction:column;align-items:center;">
+      <div style="font-weight:bold;font-size:17px;margin-bottom:12px;">Membres du groupe</div>
+      <div id="popup-membres-list" style="overflow-y:auto;max-height:300px;width:100%;margin-bottom:16px;">
+        ${groupe.membres.map((m, i) => {
+          const isAdmin = m.statut === "admin";
+          const adminBadge = isAdmin ? `<div style="color:#25d366;font-size:12px;margin-top:2px;">(admin)</div>` : "";
+          const showBtns = m.nom !== "Vous";
+          return `
+            <div class="popup-membre-item" data-index="${i}" style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #eee;">
+              <div style="flex:1;display:flex;flex-direction:column;">
+                <span style="font-size:15px;">${m.nom}</span>
+                ${adminBadge}
+                <div class="form-message text-xs mt-1" style="color:#b43c2f;"></div>
+              </div>
+              ${showBtns ? `
+                <div style="display:flex;gap:6px; margin-left:auto;">
+                  <button class="btn-statut" style="padding:2px 6px;border-radius:6px;background:#eee;border:none;cursor:pointer;font-size:11px;">
+                    ${isAdmin ? "Rendre membre" : "Rendre admin"}
+                  </button>
+                  <button class="btn-retirer" style="padding:2px 6px;border-radius:6px;background:#ffdddd;border:none;cursor:pointer;font-size:11px;color:#b43c2f;">
+                    Retirer
+                  </button>
+                </div>
+              ` : ""}
+            </div>
+          `;
+        }).join('')}
+      </div>
+      <button id="fermer-popup-btn" style="margin-top:8px;padding:6px 18px;border-radius:8px;background:#eee;border:none;cursor:pointer;">Fermer</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  popup.querySelectorAll('.btn-statut').forEach((btn, idx) => {
+    btn.onclick = () => {
+      const membre = groupe.membres[idx];
+      if (membre.nom === "Vous") return;
+      membre.statut = membre.statut === "admin" ? "membre" : "admin";
+      saveGroupesToStorage();
+      popup.remove();
+      afficherPopupMembresGroupe(nomGroupe);
+    };
+  });
+  popup.querySelectorAll('.btn-retirer').forEach((btn, idx) => {
+    btn.onclick = () => {
+      const membre = groupe.membres[idx];
+      if (membre.nom === "Vous") {
+        let msgDiv = btn.closest('.popup-membre-item').querySelector('.form-message');
+        if (!msgDiv) {
+          msgDiv = document.createElement('div');
+          msgDiv.className = 'form-message text-xs mt-1';
+          btn.closest('.popup-membre-item').appendChild(msgDiv);
+        }
+        msgDiv.textContent = "Vous ne pouvez pas vous retirer vous-même du groupe.";
+        setTimeout(() => { msgDiv.textContent = ""; }, 2500);
+        return;
+      }
+      groupe.membres.splice(idx, 1);
+      saveGroupesToStorage();
+      popup.remove();
+      afficherPopupMembresGroupe(nomGroupe);
+    };
+  });
+
+  popup.querySelector('#fermer-popup-btn').onclick = () => popup.remove();
+  popup.onclick = (e) => { if (e.target === popup) popup.remove(); };
+}
 function creerFormulaireGroupe() {
-  const container = document.createElement('div');
-  container.className = 'w-[300px] p-[15px] border-r flex flex-col bg-white';
-  
+ const container = document.createElement('div');
+container.className = 'w-[300px] p-[15px] border-r flex flex-col bg-white';
+container.id = 'contact-form'; 
   const headerDiv = document.createElement('div');
   headerDiv.className = 'flex items-center gap-3 mb-4';
   
@@ -533,16 +996,16 @@ function creerFormulaireGroupe() {
   `;
   membresDiv.appendChild(vousCheckboxDiv);
 
-  contacts.filter(c => c.nom !== "Vous").forEach((contact, idx) => {
-    const id = `membre-${idx}`;
-    const div = document.createElement('div');
-    div.className = 'flex items-center gap-2';
-    div.innerHTML = `
-      <input type="checkbox" id="${id}" class="accent-green-500" value="${contact.nom}">
-      <label for="${id}" class="text-sm">${contact.nom}${contact.prenom ? ' ' + contact.prenom : ''} (${contact.telephone})</label>
-    `;
-    membresDiv.appendChild(div);
-  });
+ contacts.filter(c => c.nom !== "Vous").forEach((contact, idx) => {
+  const id = `membre-${idx}`;
+  const div = document.createElement('div');
+  div.className = 'flex items-center gap-2';
+  div.innerHTML = `
+    <input type="checkbox" id="${id}" class="accent-green-500" value="${contact.nom}">
+    <label for="${id}" class="text-sm">${contact.nom}${contact.prenom ? ' ' + contact.prenom : ''} (${contact.telephone})</label>
+  `;
+  membresDiv.appendChild(div);
+});
 
   contentDiv.appendChild(nomDiv);
   contentDiv.appendChild(descDiv);
@@ -557,30 +1020,32 @@ function creerFormulaireGroupe() {
   container.appendChild(contentDiv);
   container.appendChild(saveButton);
 
-  setTimeout(() => {
-    document.getElementById('save-groupe').onclick = () => {
-      const nom = document.getElementById('groupe-nom-input').value.trim();
-      const description = document.getElementById('groupe-description-input').value.trim();
-      const membres = ["Vous"];
-      membresDiv.querySelectorAll('input[type="checkbox"]:not(:disabled)').forEach(cb => {
-        if (cb.checked) membres.push(cb.value);
-      });
-      if (!nom) {
-        alert('Veuillez entrer un nom pour le groupe');
-        return;
-      }
-      if (membres.length < 2) {
-        alert('Veuillez sélectionner au moins deux membres (vous inclus) !');
-        return;
-      }
-      groupes.push({ 
-        nom, 
-        description: description || 'Aucune description',
-        membres
-      });
-      restaurerDiscussions();
-    };
-  }, 100);
+setTimeout(() => {
+  document.getElementById('save-groupe').onclick = () => {
+    const nom = document.getElementById('groupe-nom-input').value.trim();
+    const description = document.getElementById('groupe-description-input').value.trim();
+    const membres = ["Vous"]; 
+    membresDiv.querySelectorAll('input[type="checkbox"]:not(:disabled)').forEach(cb => {
+      if (cb.checked) membres.push(cb.value);
+    });
+
+    if (!nom) {
+      showFormMessage('contact-form', "Veuillez entrer un nom pour le groupe", "error");
+      return;
+    }
+    if (membres.length < 2) {
+      showFormMessage('contact-form', "Veuillez sélectionner au moins deux membres (vous inclus) !", "error");
+      return;
+    }
+
+    groupes.push({ 
+      nom, 
+      description: description || 'Aucune description',
+      membres
+    });
+    restaurerDiscussions();
+  };
+}, 100);
 
   return container;
 }
@@ -589,33 +1054,126 @@ function restaurerDiscussions() {
   const section = afficherVueInitiale();
   mainSection.replaceWith(section);
   mainSection = document.getElementById('main-section');
-  
+
   setTimeout(() => {
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
+      const newInput = searchInput.cloneNode(true);
+      searchInput.parentNode.replaceChild(newInput, searchInput);
+
+      newInput.addEventListener('input', (e) => {
         const filtre = e.target.value.trim();
         if (filtre) {
           afficherRecherche(filtre);
         } else {
-          if (currentMode === 'contacts') {
-            afficherContacts();
-          } else if (currentMode === 'groupes') {
-            afficherGroupes();
-          }
+          afficherDiscussions();
         }
       });
     }
   }, 50);
 }
+function afficherRecherche(filtre) {
+  const contactsList = document.querySelector('#contacts-list');
+  if (!contactsList) return;
+  contactsList.innerHTML = '';
 
-function switchToMainSection() {
-  const wat = document.getElementById('wat');
-  if (wat) {
-    wat.parentNode.removeChild(wat);
+  if (filtre === '*') {
+    trierContacts();
+    contacts.forEach(contact => {
+      const div = document.createElement('div');
+      div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer';
+      const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
+      const initiales = genererInitiales(contact.nom, contact.prenom);
+      const avatar = creerAvatar(initiales);
+      div.innerHTML = `
+        <img src="${avatar}" class="w-10 h-10 rounded-full object-cover">
+        <div>
+          <div class="font-medium text-sm">${nomComplet}</div>
+          <div class="text-xs text-gray-500 flex items-center justify-between min-w-[120px]">
+            <span>${contact.telephone}</span>
+          </div>
+        </div>
+      `;
+      div.addEventListener('click', function() {
+        afficherChat(nomComplet, avatar);
+      });
+      contactsList.appendChild(div);
+    });
+    return;
   }
-  const chatArea = document.querySelector('.flex-grow.bg-\\[\\#f4f1e8\\]');
-  if (chatArea) chatArea.remove();
+
+  const allContacts = [...contacts, ...archives];
+  const contactsFiltres = allContacts.filter(contact => {
+    const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
+    return nomComplet.toLowerCase().includes(filtre.toLowerCase()) ||
+           contact.telephone.includes(filtre);
+  });
+
+  const allGroupes = [...groupes, ...groupesArchives];
+  const groupesFiltres = allGroupes.filter(groupe => 
+    groupe.nom.toLowerCase().includes(filtre.toLowerCase()) ||
+    (groupe.description && groupe.description.toLowerCase().includes(filtre.toLowerCase()))
+  );
+
+  if (contactsFiltres.length > 0) {
+    const contactsHeader = document.createElement('div');
+    contactsHeader.className = 'text-xs text-gray-500 mb-2 mt-4 uppercase tracking-wide';
+    contactsHeader.textContent = 'Contacts';
+    contactsList.appendChild(contactsHeader);
+
+    contactsFiltres.forEach(contact => {
+      const div = document.createElement('div');
+      div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer';
+      const nomComplet = contact.prenom ? `${contact.nom} ${contact.prenom}` : contact.nom;
+      const initiales = genererInitiales(contact.nom, contact.prenom);
+      const avatar = creerAvatar(initiales);
+      div.innerHTML = `
+        <img src="${avatar}" class="w-10 h-10 rounded-full object-cover">
+        <div>
+          <div class="font-medium text-sm">${nomComplet}</div>
+          <div class="text-xs text-gray-500 flex items-center justify-between min-w-[120px]">
+            <span>${contact.telephone}</span>
+          </div>
+        </div>
+      `;
+      div.addEventListener('click', function() {
+        afficherChat(nomComplet, avatar);
+      });
+      contactsList.appendChild(div);
+    });
+  }
+
+  if (groupesFiltres.length > 0) {
+    const groupesHeader = document.createElement('div');
+    groupesHeader.className = 'text-xs text-gray-500 mb-2 mt-4 uppercase tracking-wide';
+    groupesHeader.textContent = 'Groupes';
+    contactsList.appendChild(groupesHeader);
+
+    groupesFiltres.forEach(groupe => {
+      const div = document.createElement('div');
+      div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer';
+      const initiales = genererInitiales(groupe.nom);
+      const avatar = creerAvatar(initiales, "#e5e5e5");
+      div.innerHTML = `
+        <img src="${avatar}" class="w-10 h-10 rounded-full object-cover">
+        <div>
+          <div class="font-medium text-sm">${groupe.nom}</div>
+          <div class="text-xs text-gray-500">${groupe.description || ''}</div>
+        </div>
+      `;
+      div.addEventListener('click', function() {
+        afficherChat(groupe.nom, avatar);
+      });
+      contactsList.appendChild(div);
+    });
+  }
+
+  if (contactsFiltres.length === 0 && groupesFiltres.length === 0) {
+    const emptyDiv = document.createElement('div');
+    emptyDiv.className = 'text-gray-400 text-sm mt-4';
+    emptyDiv.textContent = 'Aucun résultat trouvé.';
+    contactsList.appendChild(emptyDiv);
+  }
 }
 const btnnew = document.querySelector("#buttonnew");
 const btnmessage = document.querySelector("#buttonmessage");
@@ -624,7 +1182,6 @@ const btndiffusion = document.querySelector("#buttondiffusion");
 const btnarchive = document.querySelector("#buttonarchive");
 let mainSection = document.querySelector("#main-section");
 let currentMode = 'contacts';
-let firstClick = true;
 
 function initSearchInput() {
   const searchInput = document.getElementById('search-input');
@@ -652,38 +1209,56 @@ function initSearchInput() {
 }
 
 btnnew.onclick = () => {
-  if (firstClick) { switchToMainSection(); firstClick = false; }
   const nouvelleInterface = creerInterfaceNouveau();
   mainSection.replaceWith(nouvelleInterface);
   mainSection = nouvelleInterface;
 };
-
 btnmessage.onclick = () => {
-  if (firstClick) { switchToMainSection(); firstClick = false; }
-  currentMode = 'contacts';
-  if (mainSection.querySelector('h3')?.textContent !== 'Discussions') {
-    restaurerDiscussions();
+  const titleElement = document.querySelector('#main-section h3');
+  if (titleElement) {
+    titleElement.textContent = 'Messages'; // Change le titre en "Messages"
   }
-  setTimeout(() => afficherContacts(), 50);
+  restaurerDiscussions();
+  setTimeout(() => afficherDiscussions(), 50);
 };
-
 btngroupe.onclick = () => {
-  if (firstClick) { switchToMainSection(); firstClick = false; }
-  currentMode = 'groupes';
-  if (mainSection.querySelector('h3')?.textContent !== 'Discussions') {
-    restaurerDiscussions();
+  const titleElement = document.querySelector('#main-section h3');
+  if (titleElement) {
+    titleElement.textContent = 'Groupes'; // Change le titre en "Groupes"
   }
+  restaurerDiscussions();
   setTimeout(() => afficherGroupes(), 50);
 };
-
-[btndiffusion, btnarchive].forEach(btn => {
-  btn.onclick = () => {
-    if (firstClick) { switchToMainSection(); firstClick = false; }
-    if (mainSection.querySelector('h3')?.textContent !== 'Discussions') {
-      restaurerDiscussions();
+btndiffusion.onclick = () => {
+  const titleElement = document.querySelector('#main-section h3');
+  if (titleElement) {
+    titleElement.textContent = 'Diffusions'; // Change le titre en "Diffusions"
+  }
+  afficherDiffusionContacts();
+};
+btnarchive.onclick = () => {
+  const titleElement = document.querySelector('#main-section h3');
+  if (titleElement) {
+    titleElement.textContent = 'Archives'; // Change le titre en "Archives"
+  }
+  if (mainSection.querySelector('h3')?.textContent !== 'Discussions') {
+    restaurerDiscussions();
+  }
+  setTimeout(() => {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      searchInput.value = '';
+      searchInput.placeholder = 'Recherche dans les discussions archivées...';
+      searchInput.oninput = (e) => {
+        const val = e.target.value.trim().toLowerCase();
+        afficherArchives(val);
+      };
     }
-  };
-});
+    afficherArchives();
+  }, 50);
+};
+
+
 
 setTimeout(() => {
   if (!document.getElementById('wat')) {
@@ -696,14 +1271,15 @@ setTimeout(() => {
     initSearchInput();
   }
 }, 100);
-
 function creerZoneChat(nomContact, avatarUrl = "chemin/vers/profil.jpg") {
   const groupe = groupes.find(g => g.nom === nomContact) || groupesArchives.find(g => g.nom === nomContact);
   let membresHtml = '';
+  let nomHtml = `<div class="text-[16px] font-semibold">${nomContact}</div>`;
   if (groupe) {
+    nomHtml = `<div class="text-[16px] font-semibold cursor-pointer text-green-700 hover:underline" id="groupe-nom-popup">${nomContact}</div>`;
     membresHtml = `
       <div class="text-xs text-gray-600 mt-1">
-        Membres : ${groupe.membres.join(', ')}
+        Membres : ${Array.isArray(groupe.membres) ? (groupe.membres.map(m => typeof m === "string" ? m : m.nom).join(', ')) : ''}
       </div>
     `;
   }
@@ -718,7 +1294,7 @@ function creerZoneChat(nomContact, avatarUrl = "chemin/vers/profil.jpg") {
           <img src="${avatarUrl}" alt="Profil" class="w-full h-full object-cover rounded-full" />
         </div>
         <div>
-          <div class="text-[16px] font-semibold">${nomContact}</div>
+          ${nomHtml}
           ${membresHtml}
         </div>
       </div>
@@ -737,7 +1313,7 @@ function creerZoneChat(nomContact, avatarUrl = "chemin/vers/profil.jpg") {
         </button>
       </div>
     </div>
-    <div class="flex-grow p-[20px]"></div>
+    <div class="chat-messages flex-grow p-[20px] overflow-y-auto"></div>
     <div class="p-0 m-0">
       <div class="flex items-center border border-[#ccc] py-[5px] px-[10px] bg-white w-full box-border">
         <input type="text" class="flex-grow border-none outline-none text-[14px] p-[10px] rounded-[25px] bg-[rgba(241,236,236,0.8)]" placeholder="Écrivez un message...">
@@ -749,7 +1325,6 @@ function creerZoneChat(nomContact, avatarUrl = "chemin/vers/profil.jpg") {
   `;
   return chatArea;
 }
-
 function afficherChat(nom, avatarUrl) {
   let chatArea = document.querySelector('.flex-grow.bg-\\[\\#f4f1e8\\]');
   if (chatArea) chatArea.remove();
@@ -758,65 +1333,61 @@ function afficherChat(nom, avatarUrl) {
     const chatDiv = creerZoneChat(nom, avatarUrl);
     container.appendChild(chatDiv);
 
-    const header = chatDiv.querySelector('.flex.bg-white');
-    if (header) {
-      const archiveBtn = header.querySelector('button[title="Archiver les contacts"]');
-      if (archiveBtn) {
-        archiveBtn.onclick = () => {
-          let isGroupe = groupes.some(g => g.nom === nom) || groupesArchives.some(g => g.nom === nom);
-          let isArchived = isGroupe ? isGroupeInArchives(nom) : isInArchives(nom);
+    const input = chatDiv.querySelector('input[type="text"]');
+    const sendBtn = chatDiv.querySelector('button[title="Envoyer"]');
 
-          let popup = document.createElement('div');
-          popup.style.position = 'fixed';
-          popup.style.top = '0';
-          popup.style.left = '0';
-          popup.style.width = '100vw';
-          popup.style.height = '100vh';
-          popup.style.background = 'rgba(0,0,0,0.2)';
-          popup.style.display = 'flex';
-          popup.style.alignItems = 'center';
-          popup.style.justifyContent = 'center';
-          popup.style.zIndex = '9999';
-
-          popup.innerHTML = `
-            <div style="background:#fff;padding:24px 32px;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.15);min-width:260px;display:flex;flex-direction:column;align-items:center;">
-              <label style="display:flex;align-items:center;gap:8px;">
-                <input type="checkbox" id="archive-checkbox" ${isArchived ? "checked" : ""} style="accent-color:#5e5a5e;">
-                <span style="font-size:15px;">
-                  ${isArchived ? "Désarchiver" : "Archiver"} ce ${isGroupe ? "groupe" : "contact"}
-                </span>
-              </label>
-              <button id="close-popup" style="margin-top:18px;padding:6px 18px;border-radius:8px;background:#eee;border:none;cursor:pointer;">Fermer</button>
-            </div>
-          `;
-          document.body.appendChild(popup);
-
-          const checkbox = popup.querySelector('#archive-checkbox');
-          checkbox.onchange = () => {
-            if (isGroupe) {
-              if (checkbox.checked) {
-                archiverGroupe(nom);
-                checkbox.nextElementSibling.textContent = "Désarchiver ce groupe";
-              } else {
-                desarchiverGroupe(nom);
-                checkbox.nextElementSibling.textContent = "Archiver ce groupe";
-              }
-            } else {
-              if (checkbox.checked) {
-                archiverContact(nom);
-                checkbox.nextElementSibling.textContent = "Désarchiver ce contact";
-              } else {
-                desarchiverContact(nom);
-                checkbox.nextElementSibling.textContent = "Archiver ce contact";
-              }
-            }
-          };
-
-          popup.querySelector('#close-popup').onclick = () => popup.remove();
-          popup.onclick = (e) => { if (e.target === popup) popup.remove(); };
-        };
-      }
+    if (brouillons[nom]) {
+      input.value = brouillons[nom];
+      sendBtn.disabled = input.value.trim() === "";
     }
+
+    input.addEventListener('input', () => {
+      brouillons[nom] = input.value;
+    });
+
+    sendBtn.onclick = () => {
+      const message = input.value.trim();
+      if (!message) return;
+
+      delete brouillons[nom];
+
+      if (!messagesParDiscussion[nom]) messagesParDiscussion[nom] = [];
+      messagesParDiscussion[nom].push({ text: message, type: "sent" });
+
+      const now = new Date();
+      const heure = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      let disc = discussions.find(d => d.nom === nom);
+      if (disc) {
+        disc.lastMessage = message;
+        disc.heure = heure;
+        disc.lu = true;
+      }
+
+      renderMessages();
+      input.value = "";
+      sendBtn.disabled = true;
+
+      afficherDiscussions();
+    };
+
+    function renderMessages() {
+      const chatContent = chatDiv.querySelector('.chat-messages');
+      chatContent.innerHTML = "";
+      const messages = messagesParDiscussion[nom] || [];
+      messages.forEach(msg => {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = msg.type === "sent" ? "mb-2 flex justify-end" : "mb-2 flex justify-start";
+        msgDiv.innerHTML = `
+          <span class="inline-block ${msg.type === "sent" ? "bg-[#25D366] text-white" : "bg-white text-gray-800 border"} px-3 py-1 rounded-2xl text-sm max-w-[70%] break-words">
+            ${msg.text}
+          </span>
+        `;
+        chatContent.appendChild(msgDiv);
+      });
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    renderMessages();
   }
 }
 function isInArchives(nom) {
@@ -843,50 +1414,60 @@ let archives = [
   { nom: "Ancien Contact", prenom: "", telephone: "77 000 00 00" }
 ];
 
-function afficherArchives(filtre = "") {
+function afficherArchives() {
   const contactsList = document.querySelector('#contacts-list');
   if (!contactsList) return;
-
   contactsList.innerHTML = '';
 
-  let filtered = archives;
-  if (filtre && filtre.length >= 2) {
-    filtered = archives.filter(a => {
-      const nomComplet = a.prenom ? `${a.nom} ${a.prenom}` : a.nom;
-      return nomComplet.toLowerCase().includes(filtre.toLowerCase()) || a.telephone.includes(filtre);
-    });
-  }
+  const discussionsArchivees = discussions.filter(disc => {
+    if (disc.type === "contact") {
+      return archives.some(a => (a.prenom ? `${a.nom} ${a.prenom}` : a.nom) === disc.nom);
+    } else if (disc.type === "groupe") {
+      return groupesArchives.some(g => g.nom === disc.nom);
+    }
+    return false;
+  });
 
-  if (filtered.length === 0) {
+  discussionsArchivees.sort((a, b) => b.heure.localeCompare(a.heure));
+
+  if (discussionsArchivees.length === 0) {
     const emptyDiv = document.createElement('div');
     emptyDiv.className = 'text-gray-400 text-sm mt-4';
-    emptyDiv.textContent = 'Aucun contact archivé trouvé.';
+    emptyDiv.textContent = 'Aucune discussion archivée trouvée.';
     contactsList.appendChild(emptyDiv);
     return;
   }
 
-  filtered.forEach(a => {
+  discussionsArchivees.forEach(disc => {
     const div = document.createElement('div');
-    div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer';
-    const nomComplet = a.prenom ? `${a.nom} ${a.prenom}` : a.nom;
-    const initiales = genererInitiales(a.nom, a.prenom);
-    const avatar = creerAvatar(initiales);
+    div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer relative';
+
     div.innerHTML = `
-      <img src="${avatar}" class="w-10 h-10 rounded-full object-cover">
-      <div>
-        <div class="font-medium text-sm">${nomComplet}</div>
-        <div class="text-xs text-gray-500">${a.telephone}</div>
+      <img src="${disc.avatar}" class="w-10 h-10 rounded-full object-cover">
+      <div class="flex-1">
+        <div class="flex items-center justify-between">
+          <div class="font-medium text-sm">${disc.nom}</div>
+          <div class="text-xs text-gray-400 ml-2">${disc.heure}</div>
+        </div>
+        <div class="text-xs text-gray-500 truncate max-w-[180px]">${disc.lastMessage}</div>
       </div>
+      <span class="ml-2 flex-shrink-0 w-2 h-2 rounded-full ${disc.lu ? 'bg-gray-400' : 'bg-green-500'} inline-block absolute right-2 top-1/2 -translate-y-1/2"></span>
     `;
+
     div.onclick = () => {
-      console.log("Contact archivé sélectionné:", nomComplet);
-      afficherChat(nomComplet, avatar);
+      disc.lu = true;
+      afficherChat(disc.nom, disc.avatar);
+      afficherArchives(); 
     };
+
     contactsList.appendChild(div);
   });
 }
-
 btnarchive.onclick = () => {
+  const titleElement = document.querySelector('#main-section h3');
+  if (titleElement) {
+    titleElement.textContent = 'Archives'; // Change le titre en "Archives"
+  }
   if (mainSection.querySelector('h3')?.textContent !== 'Discussions') {
     restaurerDiscussions();
   }
@@ -894,9 +1475,9 @@ btnarchive.onclick = () => {
     const searchInput = document.getElementById('search-input');
     if (searchInput) {
       searchInput.value = '';
-      searchInput.placeholder = 'Recherche dans les archives...';
+      searchInput.placeholder = 'Recherche dans les discussions archivées...';
       searchInput.oninput = (e) => {
-        const val = e.target.value.trim();
+        const val = e.target.value.trim().toLowerCase();
         afficherArchives(val);
       };
     }
@@ -941,7 +1522,7 @@ function afficherPopupAjoutMembre(groupe) {
   popup.style.zIndex = '9999';
 
   const membresExistants = groupe.membres || [];
-  const contactsNonMembres = contacts.filter(c => !membresExistants.includes(c.nom));
+  const contactsNonMembres = contacts.filter(c => c.nom !== "Vous" && !membresExistants.includes(c.nom)); // Exclut "Vous"
 
   let selection = [];
 
@@ -953,7 +1534,7 @@ function afficherPopupAjoutMembre(groupe) {
           const nomComplet = c.prenom ? `${c.nom} ${c.prenom}` : c.nom;
           return `
             <div class="popup-contact-item" data-index="${i}" style="cursor:pointer;display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #eee;transition:background 0.2s;">
-              <img src="${creerAvatar(genererInitiales(c.nom, c.prenom))}" style="width:32px; b height:32px;border-radius:50%;">
+              <img src="${creerAvatar(genererInitiales(c.nom, c.prenom))}" style="width:32px; height:32px;border-radius:50%;">
               <span style="font-size:15px;">${nomComplet}</span>
             </div>
           `;
@@ -1017,6 +1598,83 @@ function desarchiverGroupe(nom) {
     console.log("Groupe désarchivé :", nom);
   }
 }
+let discussions = [
+  {
+    type: "contact",
+    nom: "Daisa",
+    avatar: creerAvatar(genererInitiales("Daisa")),
+    lastMessage: "Salut !",
+    heure: "10:45",
+    lu: false
+  },
+  {
+    type: "groupe",
+    nom: "ODC",
+    avatar: creerAvatar(genererInitiales("ODC"), "#e5e5e5"),
+    lastMessage: "Bienvenue dans le groupe !",
+    heure: "09:30",
+    lu: true
+  }
+];
+function afficherDiscussions() {
+  const contactsList = document.querySelector('#contacts-list');
+  if (!contactsList) return;
+  contactsList.innerHTML = '';
+
+  const discussionsActives = discussions.filter(disc => {
+    if (disc.type === "contact") {
+      return !archives.some(a => (a.prenom ? `${a.nom} ${a.prenom}` : a.nom) === disc.nom);
+    } else if (disc.type === "groupe") {
+      return !groupesArchives.some(g => g.nom === disc.nom);
+    }
+    return true;
+  });
+
+  discussionsActives.sort((a, b) => b.heure.localeCompare(a.heure));
+
+  discussionsActives.forEach(disc => {
+    const div = document.createElement('div');
+    div.className = 'flex items-center gap-3 p-2 hover:bg-gray-100 rounded cursor-pointer relative';
+
+    const brouillon = brouillons[disc.nom];
+    let previewTexte = disc.lastMessage || "";
+    if (brouillon) {
+      previewTexte = `Brouillon: ${brouillon}`;
+    }
+
+    div.innerHTML = `
+      <img src="${disc.avatar}" class="w-10 h-10 rounded-full object-cover">
+      <div class="flex-1">
+        <div class="flex items-center justify-between">
+          <div class="font-medium text-sm">${disc.nom}</div>
+          <div class="text-xs text-gray-400 ml-2">${disc.heure}</div>
+        </div>
+        <div class="text-xs text-gray-500 truncate max-w-[180px]">${previewTexte}</div>
+      </div>
+      <span class="ml-2 flex-shrink-0 w-2 h-2 rounded-full ${disc.lu ? 'bg-gray-400' : 'bg-green-500'} inline-block absolute right-2 top-1/2 -translate-y-1/2"></span>
+    `;
+
+    div.onclick = () => {
+      disc.lu = true;
+      afficherChat(disc.nom, disc.avatar);
+      afficherDiscussions();
+    };
+
+    contactsList.appendChild(div);
+  });
+}
+function saveBrouillonsToStorage() {
+  localStorage.setItem('brouillons', JSON.stringify(brouillons));
+}
+
+function loadBrouillonsFromStorage() {
+  const data = localStorage.getItem('brouillons');
+  if (data) {
+    Object.assign(brouillons, JSON.parse(data));
+  }
+}
+window.addEventListener('DOMContentLoaded', loadBrouillonsFromStorage);
+window.addEventListener('beforeunload', saveBrouillonsToStorage);
     </script>
   </body>
 </html>
